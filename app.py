@@ -45,4 +45,3 @@ if st.button("🔄 Refresh Data"):
     st.rerun()
 
 st.caption("Data feeds updated from secure public gateway protocols.")
-the
