@@ -1,5 +1,4 @@
-
-# import streamlit as st
+import streamlit as st
 import pandas as pd
 import numpy as np
 import time
@@ -7,7 +6,6 @@ import time
 st.set_page_config(page_title="Blue-Tool Deriv", layout="wide")
 st.title("📊 Blue-Tool: Deriv Synthetic Indices Analyzer")
 
-# Sidebar options
 asset_dict = {
     "Volatility 75 Index": "R_75",
     "Volatility 100 Index": "R_100",
@@ -21,7 +19,6 @@ ma_period = st.sidebar.slider("Moving Average Period", min_value=5, max_value=50
 
 st.subheader(f"Live Market Data: {selected_display}")
 
-# Secure generation framework for stable cloud metric streaming
 np.random.seed(int(time.time()) // 10)
 base_price = 500.0 if "CRASH" in symbol else (1000.0 if "BOOM" in symbol else 250000.0)
 prices = [base_price + np.sin(i/5)*20 + np.random.normal(0, 5) for i in range(100)]
@@ -30,8 +27,6 @@ latest_price = prices[-1]
 col1, col2 = st.columns(2)
 with col1:
     st.metric(label="Latest Market Price", value=f"{latest_price:.2f}")
-    
-    # Calculate moving average
     df = pd.DataFrame(prices, columns=["Price"])
     df["MA"] = df["Price"].rolling(window=ma_period).mean()
     current_ma = df["MA"].iloc[-1]
@@ -46,9 +41,8 @@ with col1:
 with col2:
     st.line_chart(prices)
 
-# Add a quick manual update node
 if st.button("🔄 Refresh Data"):
     st.rerun()
 
 st.caption("Data feeds updated from secure public gateway protocols.")
-    Automatically refresh the
+the
